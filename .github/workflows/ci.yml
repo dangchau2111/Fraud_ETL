@@ -26,12 +26,10 @@ jobs:
           pip install -r requirements.txt   
       
       - name: Download dataset from Google Drive
-        env:
-          DATA_URL: ${{ secrets.FRAUD_DATA_URL }}
         run: |
           mkdir -p data
-          echo "Downloading dataset from $DATA_URL"
-          curl -L "$DATA_URL" -o data/creditcard.csv
+          echo "Downloading dataset from Google Drive..."
+          curl -L https://drive.google.com/uc?export=download&id=1yyc6rNhENvH5Kpf9hi2W9hwjII9gjE5j&confirm=t" -o data/creditcard.csv
           ls -lh data
           
       - name: Run ETL pipeline script
