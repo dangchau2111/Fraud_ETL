@@ -24,7 +24,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt   
-
+      
+      - name: Download dataset from Google Drive
+        env:
+          DATA_URL: ${{ secrets.FRAUD_DATA_URL }}
+        run: |
+          mkdir -p data
+          echo "Downloading dataset from $DATA_URL"
+          curl -L "$DATA_URL" -o data/creditcard.csv
+          ls -lh data
+          
       - name: Run ETL pipeline script
         run: python etl_pipeline.py   # Run pipeline to certain it not error
 
