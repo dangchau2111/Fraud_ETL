@@ -27,7 +27,7 @@ jobs:
       
       - name: Download dataset from Google Drive
         env:
-          DATA_URL: ${{ variables.FRAUD_DATA_URL }}
+          DATA_URL: ${{ secrets.FRAUD_DATA_URL }}
         run: |
           mkdir -p data
           echo "Downloading dataset from $DATA_URL"

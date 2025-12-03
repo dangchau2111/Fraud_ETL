@@ -238,8 +238,8 @@ def load_data(data_path: Optional[str] = None) -> pd.DataFrame:
 
 
 def run_etl(
-    data_path: Optional[str] = r'data\creditcard.csv',
-    output_path: Optional[str] = r'ouput\creditcard_clean.parquet',
+    data_path: Optional[str] = None,
+    output_path: Optional[str] = None,
 ) -> Path:
     """
     Run the full ETL pipeline: extract -> transform -> load.
