@@ -24,13 +24,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt   
-      
+          pip install gdown
+
       - name: Download dataset from Google Drive
         run: |
           mkdir -p data
-          echo "Downloading dataset from Google Drive..."
-          curl -L "https://drive.google.com/uc?export=download&id=1yyc6rNhENvH5Kpf9hi2W9hwjII9gjE5j&confirm=t" -o data/creditcard.csv
+          echo "Downloading dataset from Google Drive using gdown..."
+          gdown --fuzzy "https://drive.google.com/file/d/1yyc6rNhENvH5Kpf9hi2W9hwjII9gjE5j/view?usp=sharing" -O data/creditcard.csv
           ls -lh data
+
           
       - name: Run ETL pipeline script
         run: python etl_pipeline.py   # Run pipeline to certain it not error
